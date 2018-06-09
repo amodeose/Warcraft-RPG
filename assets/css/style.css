@@ -1,4 +1,10 @@
-.card {
-    border: 2px solid black;
-    margin: 10px;
+* {
+    border: 1px solid black;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 140px);
+    border: 1px solid black;
+  }

@@ -9,7 +9,6 @@ var compounder;
 
 function Character(name, healthPoints, attackPower, counterAttackPower) {
     this.name = name;
-    this.image = "image";
     this.healthPoints = healthPoints;
     this.attackPower = attackPower;
     this.counterAttackPower = counterAttackPower;
@@ -45,7 +44,11 @@ $('.card').click(function() {
         enemyCard = $(this);
         enemyHealth = roster[enemyIndex].healthPoints;
         $('.enemy').append($('<h1>').text('HP: ' + enemyHealth));
-        $('.enemy').append($('<button>').text('ATTACK').click(function(){
+        
+    };
+});
+
+$('.enemy').append($('<button>').text('ATTACK').click(function(){
             enemyHealth-=roster[activeIndex].attackPower;
             $('.enemy').find('h1').text('HP: ' + enemyHealth);
             activeHealth-=roster[enemyIndex].counterAttackPower;
@@ -55,10 +58,5 @@ $('.card').click(function() {
                 enemyCard.remove();
                 enemyCard = null;
                 $('.enemy').find('h1').remove();
-                $(this).remove();
             }
         }));
-    };
-})
-
-
