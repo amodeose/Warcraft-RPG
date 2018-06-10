@@ -1,4 +1,6 @@
-
+* {
+    border-radius: 5%;
+}
 
 .grid-container {
     display: grid;
@@ -30,6 +32,7 @@
     grid-row-start: 4;
     grid-column-start: 3;
     padding:20px;
+    column-span: 2;
 }
 
 .opponent {
@@ -42,12 +45,17 @@
 .enemyHealth {
     grid-row-start: 2;
     grid-column-start: 3;
-    padding:20px;
+    column-span: 2;
+    padding:10px;
 }
 
 p {
     margin: 9px 0 0 15px;
   }
+
+p:nth-child(1) {
+    font-weight: bold;
+}
 
 button {
     height: 70%;
@@ -56,11 +64,38 @@ button {
     grid-row-start: 3;
     grid-column-start: 2;
     padding:10px;
+    font-weight: bold;
+    font-size:1.2em;
+    color: white;
+    background-color: red;
+    opacity: 0.7;
+}
+
+button:hover {
+    opacity: 1;
 }
 
 img {
-    display: block;
-    position: relative;
-    width: 30%;
-    float: right;
+    height: 100%;
+    margin:0 auto;
+    border: 3px solid black;
+}
+
+.opponentImage {
+    grid-row-start: 2;
+    grid-column-start: 1;
+}
+
+.activeImage {
+    grid-row-start: 4;
+    grid-column-start: 1;
+}
+
+.card {
+    background-color: 	#FFEBCD;
+}
+
+.victory {
+    grid-row: 2;
+    grid-column: span 3;
 }
