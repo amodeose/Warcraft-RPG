@@ -95,7 +95,11 @@ img {
     background-color: 	#FFEBCD;
 }
 
-.victory {
+.message {
     grid-row: 2;
     grid-column: span 3;
+}
+
+h1 {
+    text-align: center;
 }

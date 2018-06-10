@@ -7,6 +7,7 @@ var activeHealth;
 var enemyHealth;
 var compounder;
 var image;
+var numDefeated = 0;
 
 function Character(name, healthPoints, attackPower, counterAttackPower, image) {
     this.name = name;
@@ -31,6 +32,8 @@ for (i = 0; i < roster.length; i++) {
     $('.grid-container').append(card);
 };
 
+$('.grid-container').append($('<div>').addClass('message').html('<h1>Choose a character below.</h1>'));
+
 
 $('.roster').click(function() {
     if (!activeCard) {
@@ -43,15 +46,19 @@ $('.roster').click(function() {
         $('.roster').removeClass('roster').addClass('enemy');
         $('.grid-container').append($('<div>').addClass('health').html('<h1>HP: ' + activeHealth + '<br>Attack: ' + roster[activeIndex].attackPower + '</h1>'));
         $('.grid-container').append($('<img>').addClass('activeImage').attr('src', image));
+        $('.message').remove();
+        $('.grid-container').append($('<div>').addClass('message').html('<h1>Choose an enemy above.</h1>'));
     } else if (!enemyCard) {
         enemyCard = $(this);
         enemyIndex = $(this).val();
         enemyHealth = roster[enemyIndex].healthPoints;
         image = roster[enemyIndex].image;
         enemyCard.removeClass('enemy').addClass('opponent');
-        $('.victory').remove();
+        $('.message').remove();
         $('.grid-container').append($('<div>').addClass('enemyHealth').html('<h1>HP: ' + enemyHealth + '<br>Counter: ' + roster[enemyIndex].counterAttackPower + '</h1>'));
         $('.grid-container').append($('<img>').addClass('opponentImage').attr('src', image));
+        $('.message').remove();
+        $('button').show();
     }
 });
 
@@ -67,9 +74,26 @@ $('.grid-container').append($('<button>').text('ATTACK').click(function(){
             enemyCard = null;
             $('.enemyHealth').remove();
             $('.opponentImage').remove();
-            $('.grid-container').append($('<div>').addClass('victory').html('<h1>Defeated! Choose another opponent.</h1>'));
+            $('.grid-container').append($('<div>').addClass('message').html('<h1>Defeated! Choose another opponent.</h1>'));
+            numDefeated++;
+            if (numDefeated === roster.length - 1) {
+                $('.message').html('<h1>You win!</h1>');
+                $('button').text('Play Again').click(function(){
+                    location.reload();
+                })
+            };
+        };
+        if (activeHealth <= 0) {
+            $('.message').html('<h1>You lose!</h1>');
+                $('button').text('Play Again').click(function(){
+                    location.reload();
+                })
         }
     }
 }));
+
+$('button').hide();
+
+
 
 
