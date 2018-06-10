@@ -30,6 +30,7 @@ for (i = 0; i < roster.length; i++) {
     card.append($('<p>').text('Attack Power: ' + roster[i].attackPower));
     card.append($('<p>').text('Counterattack: ' + roster[i].counterAttackPower));
     $('.grid-container').append(card);
+    $('.grid-container').append($('<img>').addClass('starterImage').attr('src', roster[i].image));
 };
 
 $('.grid-container').append($('<div>').addClass('message').html('<h1>Choose a character below.</h1>'));
@@ -48,6 +49,7 @@ $('.roster').click(function() {
         $('.grid-container').append($('<img>').addClass('activeImage').attr('src', image));
         $('.message').remove();
         $('.grid-container').append($('<div>').addClass('message').html('<h1>Choose an enemy above.</h1>'));
+        $('.starterImage').remove();
     } else if (!enemyCard) {
         enemyCard = $(this);
         enemyIndex = $(this).val();

@@ -103,3 +103,8 @@ img {
 h1 {
     text-align: center;
 }
+
+.starterImage {
+    grid-row-start: 3;
+    border: 3px solid black;
+}
