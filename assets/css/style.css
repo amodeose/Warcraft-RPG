@@ -2,6 +2,10 @@
     border-radius: 5%;
 }
 
+body {
+    background-image: url("../images/retina_wood.png");
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 200px);
@@ -92,7 +96,7 @@ img {
 }
 
 .card {
-    background-color: 	#FFEBCD;
+    background-image: url("../images/seamless_paper_texture.png");
 }
 
 .message {
